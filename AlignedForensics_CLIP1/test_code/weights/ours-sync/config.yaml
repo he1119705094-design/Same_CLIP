@@ -1,0 +1,5 @@
+arch: res50nodown
+model_name: ours-sync
+norm_type: resnet
+patch_size: 
+weights_file: D:\Model\AlignedForensics-master_1\checkpoint\ours-sync.pth

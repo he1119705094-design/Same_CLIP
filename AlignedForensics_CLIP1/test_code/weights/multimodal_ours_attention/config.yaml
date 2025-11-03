@@ -1,0 +1,8 @@
+model_name: multimodal_ours_attention
+weights_file: model_epoch_best.pth
+arch: res50nodown
+norm_type: resnet
+patch_size: 96
+fusion_method: attention
+enable_multimodal: true
+

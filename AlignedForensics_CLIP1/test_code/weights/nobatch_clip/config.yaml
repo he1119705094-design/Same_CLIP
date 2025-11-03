@@ -1,0 +1,7 @@
+model_name: nobatch_clip
+weights_file: nobatch_clip.pth
+arch: res50nodown
+norm_type: resnet
+patch_size: 96
+fusion_method: concat
+enable_multimodal: true

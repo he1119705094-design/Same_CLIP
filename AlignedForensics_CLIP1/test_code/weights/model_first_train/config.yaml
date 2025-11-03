@@ -1,0 +1,5 @@
+arch: res50nodown
+model_name: ours-sync
+norm_type: resnet
+patch_size: Clip224
+weights_file: D:\Model\AlignedForensics-master_1\training_code\checkpoints\first_test\model_epoch_best.pth
