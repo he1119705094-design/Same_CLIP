@@ -141,6 +141,9 @@ def create_dataloader(opt, subdir='.', is_train=True):
                                             #如果是训练集，会调用get_bal_sampler(dataset)生成一个平衡采样器（Balanced Sampler），用于按一定权重或均衡方式采样，避免类别不平衡带来的训练偏差。
                                             #如果是验证集，则不使用采样器，默认顺序采样。
         #num_workers=int(opt.num_threads),  #说明代码支持根据配置动态设置线程数，不过这里固定用0。
-        num_workers=0,# 指明加载数据时使用多少个子进程并行加载。这里设为0，表示数据加载在主进程同步进行，没有使用多线程或多进程。
+        num_workers=16,# 指明加载数据时使用多少个子进程并行加载。这里设为0，表示数据加载在主进程同步进行，没有使用多线程或多进程。
+        pin_memory=True,  # ✅ 提高主机到GPU的传输速度
+        prefetch_factor=2,  # ✅ Python 3.8+ 支持
+        persistent_workers=True  # ✅ 只在PyTorch 1.8+可用
     )
     return data_loader

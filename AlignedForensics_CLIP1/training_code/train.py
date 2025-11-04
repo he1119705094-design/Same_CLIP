@@ -75,7 +75,8 @@ if __name__ == "__main__":
                     writer.add_scalar("train/loss", loss, total_steps)#
 
             # Save model
-            model.save_networks(epoch)# 训练完一个 epoch 后保存模型快照，以便后续恢复或评估。
+            if epoch % 5 == 0:
+                model.save_networks(epoch)# 训练完一个 epoch 后保存模型快照，以便后续恢复或评估。
 
         # Validation
         print("Validation ...", flush=True)

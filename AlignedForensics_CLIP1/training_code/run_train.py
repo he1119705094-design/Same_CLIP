@@ -9,6 +9,8 @@ os.environ["HBB_sync"] = r'D:\Model\AlignedForensics-master\checkpoint'  # 替�
 os.environ["EXP_NAME"] = "Batch_test"  # 自定义实验名称
 os.environ["LDM_DS_NAME"] = "checkpoints_dir_batch_noclip"  # 检查点目录
 
+import torch
+print(f"✅ CUDA available: {torch.cuda.is_available()} | GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}")
 
 # ===== 训练命令配置 =====
 # 对齐数据集进行的命令
@@ -101,7 +103,7 @@ if __name__ == "__main__":
     # 模式选择 (取消注释要运行的命令)
 
     # 1. 同步模式训练（1000真实+1000生成图像）同时启用同步模式和CLIP增强
-    run_training_command(device_id=0, sync_mode=True , multimodal=True)        # 对齐使用CLIP
+    #run_training_command(device_id=0, sync_mode=True , multimodal=True)        # 对齐使用CLIP
     #run_training_command(device_id=0, sync_mode=True)                          # 对齐未使用CLIP
     # 2. 全数据集非同步训练
     #run_training_command(device_id=0, full_dataset=True)
@@ -111,7 +113,7 @@ if __name__ == "__main__":
     #run_custom_command(multimodal=True)
     
     # 4. 原始训练（默认）
-    #run_custom_command()                            # 不对齐未使用CLIP
+    run_custom_command()                            # 不对齐未使用CLIP
     #run_custom_command(multimodal=True)           # 没对齐使用CLIP
     
     # 5. ICML实验（Stay-Positive方法）
